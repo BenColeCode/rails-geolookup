@@ -17,3 +17,14 @@ window.addEventListener("load", () => {
     });
   });
 });
+
+window.addEventListener("load", () => {
+  document.getElementById('inputFile').addEventListener("change", () => {
+    var file = new FileReader();
+    file.onload = () => {
+      document.getElementById('displayText').textContent = file.result;
+    }
+    var readFiles = file.readAsText(event.target.files[0]);
+
+  });
+});
