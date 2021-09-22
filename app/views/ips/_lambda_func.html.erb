@@ -13,8 +13,6 @@
   </tr>
   <% if $ips != nil %>
     <% $ips.each do |ip| %>
-      <% puts ip %>
-      <% puts ip.keys %>
       <tr>
         <td><%= ip["ip"] %></td>
         <td><%= ip["is_private"] %></td>

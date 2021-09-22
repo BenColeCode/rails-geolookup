@@ -31,7 +31,6 @@ window.addEventListener("load", () => {
         url: '/ips',
         data: form,
         success: function(result) {
-          console.log(result.lastChild);
           document.getElementById('displayText').append(result.lastChild);
         },
       });

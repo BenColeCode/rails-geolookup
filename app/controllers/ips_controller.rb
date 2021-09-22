@@ -18,7 +18,6 @@ class IpsController < ApplicationController
 
     resp_payload = JSON.parse(resp.payload.string) # , symbolize_names: true)
 
-    puts resp_payload
     # If the status code is 200, the call succeeded
     if resp_payload["statusCode"] == 200
       $ips = resp_payload["body"]
