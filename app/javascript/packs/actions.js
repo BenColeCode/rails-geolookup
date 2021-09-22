@@ -1,3 +1,5 @@
+import Rails from "@rails/ujs"
+
 function paintIt(element, backgroundColor, textColor) {
   element.style.backgroundColor = backgroundColor;
   if (textColor) {
@@ -22,9 +24,18 @@ window.addEventListener("load", () => {
   document.getElementById('inputFile').addEventListener("change", () => {
     var file = new FileReader();
     file.onload = () => {
-      document.getElementById('displayText').textContent = file.result;
+      var form = new FormData();
+      form.append("logEvents", file.result);
+      Rails.ajax({
+        type: "POST",
+        url: '/ips',
+        data: form,
+        success: function(result) {
+          console.log(result.lastChild);
+          document.getElementById('displayText').append(result.lastChild);
+        },
+      });
     }
     var readFiles = file.readAsText(event.target.files[0]);
-
   });
 });
